@@ -35,7 +35,7 @@ class MinHash:
         self._hash_functions = []
 
         self._universe_size = 2147483647  # 2^31-1 Mersenne prime
-        for i in range(0, num_hash_functions):
+        for i in range(num_hash_functions):
             a = randint(0, self._universe_size)
             b = randint(0, self._universe_size)
             c = randint(0, self._universe_size)
@@ -50,7 +50,7 @@ class MinHash:
             return hash_min_values
 
         # Go over all tokens and generate words (k-shingling)
-        for token_index in range(0, self._num_hash_functions):
+        for token_index in range(self._num_hash_functions):
             # Build the word by concatenating consecutive tokens
             word_builder = []
             for i in range(token_index, token_index + self._tokens_in_word):
@@ -61,7 +61,7 @@ class MinHash:
 
             hash_code = hash(''.join(word_builder))
             # Go over all hash functions
-            for hash_index in range(0, self._num_hash_functions):
+            for hash_index in range(self._num_hash_functions):
                 hash_function = self._hash_functions[hash_index]  # type: MinHash.HashGenerator
 
                 # Compute hash value of token with current hash function
@@ -75,7 +75,7 @@ class MinHash:
     def compare_sketches(self, first_min_hash_sketch: [], second_min_hash_sketch: []) -> float:
         """Compare two MinHash sketches."""
         equal_hashes = 0
-        for i in range(0, self._num_hash_functions):
+        for i in range(self._num_hash_functions):
             if first_min_hash_sketch[i] == second_min_hash_sketch[i]:
                 equal_hashes += 1
 

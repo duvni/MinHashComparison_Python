@@ -28,7 +28,7 @@ class MinHashSimilarity:
         band_hashes = []
         compared_sketches = set()
 
-        for i in range(0, self._bands):
+        for i in range(self._bands):
             band_hashes.append(self._compute_band_hash(min_hashes, i))
             if band_hashes[i] in self._buckets:
                 for sketch_to_compare in self._buckets[band_hashes[i]]:
@@ -42,7 +42,7 @@ class MinHashSimilarity:
                         compared_sketches.add(sketch_to_compare_key)
 
         # No match found, add document to buckets
-        for i in range(0, self._bands):
+        for i in range(self._bands):
             if band_hashes[i] not in self._buckets:
                 self._buckets[band_hashes[i]] = []
             self._buckets[band_hashes[i]].append(min_hashes)
@@ -52,7 +52,7 @@ class MinHashSimilarity:
     def _compute_band_hash(self, min_hashes: [], i: int) -> str:
         """Compute a hash for quick bucket match search."""
         band_hash_list = []
-        for j in range(0, self._rows):
+        for j in range(self._rows):
             # Adding the rows corresponding to ith band
             band_hash_list.append('%010d' % min_hashes[i * self._rows + j])
 
