@@ -81,4 +81,4 @@ class MinHash:
             if first_min_hash_sketch[i] == second_min_hash_sketch[i]:
                 equal_hashes += 1
 
-        return float(equal_hashes) / float(self._num_hash_functions)
+        return equal_hashes / self._num_hash_functions
