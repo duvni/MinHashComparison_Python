@@ -43,7 +43,7 @@ class MinHash:
 
     def compute_sketch(self, tokens: []) -> []:
         """Compute the MinHash Sketch from an array of tokens.
-        
+
         Update the hash tables according to the min values of the sketch.
         """
         hash_min_values = [self._universe_size] * self._num_hash_functions
