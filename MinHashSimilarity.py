@@ -49,7 +49,7 @@ class MinHashSimilarity:
 
         return False
 
-    def _compute_band_hash(self, min_hashes: [], i: int) -> str:
+    def _compute_band_hash(self, min_hashes: list, i: int) -> str:
         """Compute a hash for quick bucket match search."""
         band_hash_list = []
         for j in range(self._rows):
