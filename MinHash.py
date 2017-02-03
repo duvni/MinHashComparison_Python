@@ -41,7 +41,7 @@ class MinHash:
             c = randint(0, self._universe_size)
             self._hash_functions.append(MinHash.HashGenerator(a, b, c, self._universe_size))
 
-    def compute_sketch(self, tokens: []) -> []:
+    def compute_sketch(self, tokens: list) -> list:
         """Compute the MinHash Sketch from an array of tokens.
 
         Update the hash tables according to the min values of the sketch.
@@ -74,7 +74,7 @@ class MinHash:
 
         return hash_min_values
 
-    def compare_sketches(self, first_min_hash_sketch: [], second_min_hash_sketch: []) -> float:
+    def compare_sketches(self, first_min_hash_sketch: list, second_min_hash_sketch: list) -> float:
         """Compare two MinHash sketches."""
         equal_hashes = 0
         for i in range(self._num_hash_functions):
