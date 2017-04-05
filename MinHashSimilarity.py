@@ -6,8 +6,8 @@ class MinHashSimilarity:
 
     def __init__(self, threshold: float, tokens_in_word: int=5, num_hash_functions: int=400, bands: int=20,
                  rows: int=20):
-        if threshold < 0 or threshold > 100:
-            raise Exception('MinHashSimilarity - Illegal threshold: {}'.format(tokens_in_word))
+        if threshold < 0 or threshold > 1:
+            raise Exception('MinHashSimilarity - Illegal threshold: {}'.format(threshold))
         if bands*rows != num_hash_functions:
             raise Exception('MinHashSimilarity - bands * rows != num_hash_functions')
         self._threshold = threshold
